@@ -41,7 +41,6 @@ const Login = () => {
 
   useEffect(() => {
     if (filled < 100 && isRunning) {
-      console.log("run");
       setTimeout(() => {
         setFilled((prev) => (prev += 20));
       }, 50);
@@ -140,118 +139,121 @@ const Login = () => {
   };
 
   return (
-    <form method="post">
-      <div className="main w-[24rem] mb-28 font-poppins sm:w-[30rem] md:mb-36 ">
-        {/* HEADER */}
-        <FormHeader text={"Sign in"} />
+    <div className="bg-background flex justify-center items-center h-screen">
+      <form method="post">
+        <div className="main w-[23rem] mb-16 font-poppins sm:w-[30rem]  md:mb-32 ">
+          {/* HEADER */}
+          <FormHeader text={"Sign in to  your account"} />
 
-        {/* Login Form */}
-        <div className="login-form bg-white drop-shadow-md p-10 space-y-5 rounded-md relative">
-          {/* Progress bar */}
-          <div className={`${clicked ? "" : "hidden"}`}>
-            <div className="absolute top-0 left-0  w-full border-2 rounded-md">
-              <div
-                style={{
-                  width: `${filled}%`,
-                  backgroundColor: "#4f46e5",
-                  transition: "ease-in-out 0.5s",
-                  height: "5px",
-                }}
-              ></div>
+          {/* Login Form */}
+          <div className="login-form bg-white drop-shadow-md p-10 space-y-5 rounded-md relative">
+            {/* Progress bar */}
+            <div className={`${clicked ? "" : "hidden"}`}>
+              <div className="absolute top-0 left-0  w-full border-2 rounded-md">
+                <div
+                  style={{
+                    width: `${filled}%`,
+                    backgroundColor: "#4f46e5",
+                    transition: "ease-in-out 0.5s",
+                    height: "5px",
+                  }}
+                ></div>
+              </div>
             </div>
-          </div>
 
-          {/* Input Field  Email*/}
-          <div className="flex flex-col space-y-1">
-            <label htmlFor={emailId}>Email address</label>
+            {/* Input Field  Email*/}
+
             <Input
               type={"email"}
               name={"email"}
               state={user.email}
               handleFunction={handleEmailChange}
               id={emailId}
+              labelName={"Email address"}
+              inputError={inputError.email}
             />
 
-            <p className="text-red-700">{inputError.email}</p>
-          </div>
+            {/* Input Field  Password*/}
+            <div className="flex flex-col space-y-1">
+              <label htmlFor={passwordId}>Password</label>
 
-          {/* Input Field  Password*/}
-          <div className="flex flex-col space-y-1">
-            <label htmlFor={passwordId}>Password</label>
+              <div className="input-parent relative w-full">
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  name={"password"}
+                  state={user.password}
+                  handleFunction={handlePasswordChange}
+                  id={passwordId}
+                />
 
-            <div className="input-parent relative w-full">
-              <Input
-                type={showPassword ? "text" : "password"}
-                name={"password"}
-                state={user.password}
-                handleFunction={handlePasswordChange}
-                id={passwordId}
-              />
+                {/* Show password button */}
+                <button
+                  className="absolute  right-2 top-2"
+                  onClick={handleClick}
+                >
+                  <img src={ShowPassword} alt="" className="w-6" />
+                </button>
+              </div>
 
-              {/* Show password button */}
-              <button className="absolute  right-2 top-2" onClick={handleClick}>
-                <img src={ShowPassword} alt="" className="w-6" />
+              <p className="text-red-700">{inputError.password}</p>
+            </div>
+
+            <div className="flex justify-between	">
+              <p>
+                <input
+                  type="checkbox"
+                  className="cursor-pointer accent-primary"
+                />{" "}
+                <span className="ml-1 text-sm sm:text-base">Remember me</span>
+              </p>
+
+              <a
+                href="#"
+                className="text-primary font-semibold text-sm sm:text-base"
+              >
+                Forgot your password?
+              </a>
+            </div>
+
+            <div>
+              <button
+                className="bg-primary w-full text-white py-2 rounded-md text-lg hover:drop-shadow-sm"
+                onClick={handleSubmit}
+              >
+                Sign in
               </button>
             </div>
 
-            <p className="text-red-700">{inputError.password}</p>
-          </div>
+            <div className=" grid grid-cols-3	">
+              <div className="border-b-2 border-gray-300 self-start h-3/6"></div>
 
-          <div className="flex justify-between	">
-            <p>
-              <input
-                type="checkbox"
-                className="cursor-pointer accent-primary"
-              />{" "}
-              <span className="ml-1 text-sm sm:text-base">Remember me</span>
-            </p>
+              <div className="p-1 text-center ">
+                <p className="text-gray-500 text-sm sm:text-base">
+                  Or continue with
+                </p>
+              </div>
 
-            <a
-              href="#"
-              className="text-primary font-semibold text-sm sm:text-base"
-            >
-              Forgot your password?
-            </a>
-          </div>
-
-          <div>
-            <button
-              className="bg-primary w-full text-white py-2 rounded-md text-lg hover:drop-shadow-sm"
-              onClick={handleSubmit}
-            >
-              Sign in
-            </button>
-          </div>
-
-          <div className=" grid grid-cols-3	">
-            <div className="border-b-2 border-gray-300 self-start h-3/6"></div>
-
-            <div className="p-1 text-center ">
-              <p className="text-gray-500 text-sm sm:text-base">
-                Or continue with
-              </p>
+              <div className="border-b-2 border-gray-300 h-3/6 "></div>
             </div>
 
-            <div className="border-b-2 border-gray-300 h-3/6 "></div>
-          </div>
+            <div className="flex justify-between ">
+              <SocialButton props={FacebookLogo} />
+              <SocialButton props={GoogleLogo} />
+              <SocialButton props={GithubLogo} />
+            </div>
 
-          <div className="flex justify-between ">
-            <SocialButton props={FacebookLogo} />
-            <SocialButton props={GoogleLogo} />
-            <SocialButton props={GithubLogo} />
-          </div>
-
-          <div className="text-center">
-            <button
-              onClick={handleProgressBar}
-              className="signup text-gray-400 hover:text-primary"
-            >
-              Don't have an account? Sign up here
-            </button>
+            <div className="text-center">
+              <button
+                onClick={handleProgressBar}
+                className="signup text-gray-400 hover:text-primary"
+              >
+                Don't have an account? Sign up here
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

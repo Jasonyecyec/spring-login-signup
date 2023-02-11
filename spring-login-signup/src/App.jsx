@@ -7,14 +7,12 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="bg-background flex justify-center items-center h-screen">
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />}></Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />}></Route>
+    </Routes>
   );
 }
 
