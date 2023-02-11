@@ -141,7 +141,7 @@ const Login = () => {
   return (
     <div className="bg-background flex justify-center items-center h-screen">
       <form method="post">
-        <div className="main w-[23rem] mb-16 font-poppins sm:w-[30rem]  md:mb-32 ">
+        <div className="main w-[23rem] font-poppins sm:w-[30rem]  md:mb-32 ">
           {/* HEADER */}
           <FormHeader text={"Sign in to  your account"} />
 
