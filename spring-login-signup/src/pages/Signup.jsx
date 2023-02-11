@@ -16,9 +16,9 @@ const Signup = () => {
   const id = useId();
 
   return (
-    <div className="bg-red-300 flex justify-center items-center h-fit">
+    <div className="bg-red-300 flex justify-center ">
       <form method="post">
-        <div className="main w-[24rem] mb-28 font-poppins sm:w-[30rem] md:mb-36 ">
+        <div className="main w-[24rem]  font-poppins sm:w-[30rem] ">
           {/* HEADER */}
           <FormHeader text={"Create an account"} />
 
