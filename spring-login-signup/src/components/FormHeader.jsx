@@ -3,7 +3,7 @@ import TailwindLogo from "../assets/tailwind.svg";
 
 const FormHeader = ({ text }) => {
   return (
-    <div className="text-center space-y-1  p-10 flex flex-col justify-center">
+    <div className="text-center space-y-1  p-7 flex flex-col justify-center md:p-10">
       <div className="flex justify-center">
         <img src={TailwindLogo} alt="logo" className="w-12 md:w-16" />
       </div>

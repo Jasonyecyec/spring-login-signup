@@ -141,12 +141,12 @@ const Login = () => {
   return (
     <div className="bg-background flex justify-center  h-screen">
       <form method="post">
-        <div className="main w-[23rem] font-poppins sm:w-[30rem]  mt-5">
+        <div className="main w-[23rem] font-poppins sm:w-[30rem]  md:mt-5">
           {/* HEADER */}
           <FormHeader text={"Sign in to  your account"} />
 
           {/* Login Form */}
-          <div className="login-form bg-white drop-shadow-md p-10 space-y-5 rounded-md relative">
+          <div className="login-form bg-white drop-shadow-md p-6 space-y-5 rounded-md relative md:p-10">
             {/* Progress bar */}
             <div className={`${clicked ? "" : "hidden"}`}>
               <div className="absolute top-0 left-0  w-full border-2 rounded-md">
