@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import {
   isValidEmail,
   containsNumbers,
-  isInputEmpty,
+  isEmpty,
 } from "../utils/InputValidator.js";
 import FormHeader from "../components/FormHeader";
 
@@ -52,7 +52,7 @@ const Login = () => {
 
     setTimeout(() => {
       navigate("/signup");
-    }, 1500);
+    }, 1000);
 
     setClicked(true);
     setIsRunning(true);
@@ -118,13 +118,13 @@ const Login = () => {
     let verified = true;
 
     //if  email and password is empty
-    if (isInputEmpty(user.email) && isInputEmpty(user.password)) {
+    if (isEmpty(user)) {
       setInputError({ email: "Email is empty", password: "Password is empty" });
       verified = false;
-    } else if (isInputEmpty(user.email)) {
+    } else if (isEmpty(user.email)) {
       setInputError({ ...inputError, email: "Email is empty" });
       verified = false;
-    } else if (isInputEmpty(user.password)) {
+    } else if (isEmpty(user.password)) {
       setInputError({ ...inputError, password: "Password is empty" });
       verified = false;
     }
@@ -149,7 +149,7 @@ const Login = () => {
           <div className="login-form bg-white drop-shadow-md p-6 space-y-5 rounded-md relative md:p-10">
             {/* Progress bar */}
             <div className={`${clicked ? "" : "hidden"}`}>
-              <div className="absolute top-0 left-0  w-full border-2 rounded-md">
+              <div className="absolute top-0 left-0  w-full  rounded-md">
                 <div
                   style={{
                     width: `${filled}%`,
@@ -188,7 +188,7 @@ const Login = () => {
 
                 {/* Show password button */}
                 <button
-                  className="absolute  right-2 top-2"
+                  className="absolute  right-2 top-3"
                   onClick={handleClick}
                 >
                   <img src={ShowPassword} alt="" className="w-6" />
